@@ -1,0 +1,16 @@
+@PracticAsp11102026_HostAddress = http://localhost:5185
+
+POST {{PracticAsp11102026_HostAddress}}/api/projects
+Content-Type: application/json
+
+{
+  "name": "First project",
+  "description": "Task Tracker API sample"
+}
+
+###
+
+GET {{PracticAsp11102026_HostAddress}}/api/projects
+Accept: application/json
+
+###

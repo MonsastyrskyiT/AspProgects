@@ -1,0 +1,49 @@
+﻿@model Homvork_asp.DTO.InsuranceViewModel
+
+@{
+    ViewData["Title"] = "Калькулятор автоцивілки";
+}
+
+<h2>Калькулятор автоцивілки (ОСЦПВ)</h2>
+
+<form asp-action="Index" method="post">
+    <div class="form-group">
+        <label asp-for="EngineCapacity"></label>
+        <input asp-for="EngineCapacity" class="form-control" />
+    </div>
+
+    <div class="form-group">
+        <label asp-for="CityType"></label>
+        <select asp-for="CityType" class="form-control">
+            <option value="Kyiv">Київ</option>
+            <option value="LargeCity">Велике місто</option>
+            <option value="SmallTown">Інше</option>
+        </select>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="DriverExperienceYears"></label>
+        <input asp-for="DriverExperienceYears" class="form-control" />
+    </div>
+
+    <div class="form-group form-check">
+        <input asp-for="HasDiscountCategory" class="form-check-input" />
+        <label asp-for="HasDiscountCategory" class="form-check-label"></label>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Розрахувати</button>
+</form>
+
+@if (!string.IsNullOrEmpty(Model.ErrorMessage))
+{
+    <div class="alert alert-danger mt-3">
+        @Model.ErrorMessage
+    </div>
+}
+
+@if (Model.CalculatedPrice.HasValue)
+{
+    <div class="alert alert-success mt-3">
+        Сума страхування: <strong>@Model.CalculatedPrice грн</strong>
+    </div>
+}
