@@ -1,0 +1,6 @@
+@FileAvatar_HostAddress = http://localhost:5083
+
+GET {{FileAvatar_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
