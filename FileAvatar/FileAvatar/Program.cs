@@ -1,4 +1,6 @@
 using FileAvatar.Data;
+using FileAvatar.Middleware;
+using FileAvatar.MIddleware;
 using FileAvatar.Services;
 using Microsoft.EntityFrameworkCore;
 
@@ -9,6 +11,13 @@ var connectionString = builder.Configuration.GetConnectionString("DefaultConnect
 builder.Services.AddDbContext<AppDBContext>(option =>
 {
     option.UseNpgsql(connectionString);
+});
+
+
+
+builder.Services.AddControllers(option =>
+{
+    option.Filters.Add<ValidationFilterAttribute>();
 });
 
 
@@ -39,6 +48,7 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+app.UseRequestLogging();
 
 app.UseStaticFiles();
 

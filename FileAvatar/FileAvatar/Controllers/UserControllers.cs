@@ -51,6 +51,9 @@ namespace FileAvatar.Controllers
             await _context.SaveChangesAsync();
             return Ok();
          }
+
+
+
         [HttpGet("{id:guid}")]
         public async Task<IActionResult> GetById(Guid id)
         {
