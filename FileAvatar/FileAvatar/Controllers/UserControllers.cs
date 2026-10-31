@@ -62,5 +62,15 @@ namespace FileAvatar.Controllers
             return Ok(user);
         }
 
+
+
+
+        [HttpGet("me")]
+        public IActionResult GetClientInfo()
+        {
+            var clientId = HttpContext.Items["ClientId"]?.ToString();
+            return Ok(new { ClientId = clientId, Status = "Authenticate" });
+        }
+
     }
 }
