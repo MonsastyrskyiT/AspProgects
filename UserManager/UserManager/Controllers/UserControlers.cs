@@ -25,7 +25,7 @@ namespace UserManager.Controllers
             return Ok(users);
         }
 
-        [HttpGet("{id:guid}")]
+        [HttpGet("{id:guid}")]//gooood
         public async Task<IActionResult> GetById(Guid id)
         {
             var user = await _userService.GetUserByIdAsync(id);
